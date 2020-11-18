@@ -1,22 +1,19 @@
 import './App.css';
+import { Route } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import MainPage from './pages/MainPage';
+import TicketPage from './pages/TicketPage';
+import 'antd/dist/antd.css';
 
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Helmet>
+        <title>MOVIE</title>
+      </Helmet>
+      <Route component={MainPage} path="/" exact/>
+      <Route component={TicketPage} path="/ticket" exact/>
+    </>
   );
 }
 
