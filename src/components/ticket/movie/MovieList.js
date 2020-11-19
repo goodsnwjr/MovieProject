@@ -1,5 +1,5 @@
 import React from 'react';
-import TicketFooter from './TicketFooter';
+import TicketFooter from '../TicketFooter';
 
 const MovieList = ({ticketPageStatus, setTicketPageStatus}) => {
   return (

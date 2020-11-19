@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieList from '../../components/ticket/MovieList.js';
+import MovieList from '../../components/ticket/movie/MovieList';
 
 const MovieSelectorContainer = ({ticketPageStatus, setTicketPageStatus}) => {
   return (
