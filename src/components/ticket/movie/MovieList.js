@@ -1,7 +1,6 @@
 import React from 'react';
-import TicketFooter from '../TicketFooter';
 
-const MovieList = ({ticketPageStatus, setTicketPageStatus}) => {
+const MovieList = () => {
   return (
     <>
         <div>영화리스트</div>
@@ -13,7 +12,6 @@ const MovieList = ({ticketPageStatus, setTicketPageStatus}) => {
         <div>영화리스트</div>
         <div>영화리스트</div>
         <div>영화리스트</div>
-        <TicketFooter ticketPageStatus={ticketPageStatus} setTicketPageStatus={setTicketPageStatus} />
     </>
   ) 
 };

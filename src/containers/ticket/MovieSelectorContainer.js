@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MovieList from '../../components/ticket/movie/MovieList';
 
-const MovieSelectorContainer = ({ticketPageStatus, setTicketPageStatus}) => {
+const MovieSelectorContainer = () => {
+  const [ticketPageStatus, setTicketPageStatus] = useState();
   return (
       <>
         <MovieList ticketPageStatus={ticketPageStatus} setTicketPageStatus={setTicketPageStatus} />
