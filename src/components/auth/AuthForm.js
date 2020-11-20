@@ -25,10 +25,10 @@ const StyledInput = styled.input`
   border-bottom: 1px solid gray;
   padding-bottom: 0.5rem;
   outline: none;
-  width: 100%;
+  width: 100%;                
   &:focus {
     color: $oc-teal-7;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid gray;z
   }
   &+ & {
     margin-top: 1rem;
@@ -75,24 +75,24 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
   const text = textMap[type];
   return (
     <AuthFormBlock>
-     <h3>{text}</h3>
+      <h3>{text}</h3>
       <form onSubmit={onSubmit}>
         <StyledInput
-             autoComplete="username"
-             name="username"
-             placeholder="아이디"
-             onChange={onChange}
-             />
-        <StyledInput 
-          autoComplete="new-password" 
-          name="password" 
-          placeholder="비밀번호" 
-          type="password" 
+          autoComplete="username"
+          name="username"
+          placeholder="아이디"
           onChange={onChange}
         />
-          {type === 'register' && (
+        <StyledInput
+          autoComplete="new-password"
+          name="password"
+          placeholder="비밀번호"
+          type="password"
+          onChange={onChange}
+        />
+        {type === 'register' && (
           <StyledInput
-            autoComplete="new-password" 
+            autoComplete="new-password"
             name="passwordConfirm"
             placeholder="비밀번호 확인"
             type="password"
@@ -101,15 +101,15 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
         )}
         {error && <ErrorMessage>{error}</ErrorMessage>}
         <ButtonWithMarginTop cyan fullWidth>
-           {text}
+          {text}
         </ButtonWithMarginTop>
       </form>
       <Footer>
-      {type === 'login' ? (
+        {type === 'login' ? (
           <Link to="/register">회원가입</Link>
         ) : (
-          <Link to="/login">로그인</Link>
-        )}
+            <Link to="/login">로그인</Link>
+          )}
       </Footer>
     </AuthFormBlock>
   );

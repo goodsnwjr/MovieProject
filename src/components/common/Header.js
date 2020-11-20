@@ -50,15 +50,15 @@ const Header = () => {
     <>
       <HeaderBlock>
         <Wrapper>
-        <Link to="/" className="logo">
+          <Link to="/" className="logo">
             MOVIE
         </Link>
-        <div className="center">
-          <Link type="link" to="/">영화</Link>
-          <Link type="link" to="/ticket">예매</Link>
-          <Link type="link" to="/">극장</Link>
-          <Link type="link" to="/">이벤트&컬처</Link>
-        </div>
+          <div className="center">
+            <Link type="link" to="/">영화</Link>
+            <Link type="link" to="/ticket">예매</Link>
+            <Link type="link" to="/">극장</Link>
+            <Link type="link" to="/">이벤트&컬처</Link>
+          </div>
         </Wrapper>
       </HeaderBlock>
     </>
