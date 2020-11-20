@@ -1,19 +1,16 @@
 import React from 'react';
-import TicketFooter from './TicketFooter';
-
-const DateList = ({ticketPageStatus, setTicketPageStatus}) => {
+const DateList = () => {
   return (
     <>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <TicketFooter ticketPageStatus={ticketPageStatus} setTicketPageStatus={setTicketPageStatus} />
+      <div>날짜리스트</div>
+      <div>날짜리스트</div>
+      <div>날짜리스트</div>
+      <div>날짜리스트</div>
+      <div>날짜리스트</div>
+      <div>날짜리스트</div>
+      <div>날짜리스트</div>
+      <div>날짜리스트</div>
+      <div>날짜리스트</div>
     </>
   ) 
 };

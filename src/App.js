@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import TicketPage from './pages/TicketPage';
+import TicketPage from './pages/TicketMainPage';
 import 'antd/dist/antd.css';
 
 function App() {
