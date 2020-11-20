@@ -12,14 +12,14 @@ const LoginForm = () => {
 
 
 
-// 폼 등록 이벤트 핸들러
+  // 폼 등록 이벤트 핸들러
   const onSubmit = e => {
     e.preventDefault();
 
   };
 
 
-return (
+  return (
     <AuthForm
       type="login"
       onChange={onChange}
