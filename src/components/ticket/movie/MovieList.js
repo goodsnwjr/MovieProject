@@ -1,18 +1,24 @@
 import React from 'react';
 
-const MovieList = () => {
+//modulse
+import {Row, Col} from 'antd';
+
+const MovieList = (props) => {
+  const {movie, chooseMovie, setDecide} = props;
+  let movieList = movie && movie.boxOfficeResult.dailyBoxOfficeList;
   return (
-    <>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-        <div>영화리스트</div>
-    </>
+    <Row>
+      {
+        movie && movieList.map((ele, idx) => {
+          return(
+            <Row key={'movie-list-'+idx}>
+              <Col>{ele.rankOldAndNew}</Col>
+              <Col>{ele.movieNm}</Col>
+            </Row>
+          )
+        }) 
+      }
+    </Row>
   ) 
 };
 

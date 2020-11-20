@@ -1,21 +1,25 @@
 import React from 'react';
 
-const TimeList = () => {
+//modulse
+import {Row, Col} from 'antd';
+
+const TimeList = (props) => {
+  const {movie, chooseMovie, setDecide} = props;
+  let movieList = movie && movie.boxOfficeResult.dailyBoxOfficeList;
   return (
-    <>
-      <div>시간리스트</div>
-      <div>시간리스트</div>
-      <div>시간리스트</div>
-      <div>시간리스트</div>
-      <div>시간리스트</div>
-      <div>시간리스트</div>
-      <div>시간리스트</div>
-      <div>시간리스트</div>
-      <div>시간리스트</div>
-    </>
+    <Row>
+      {
+        movie && movieList.map((ele, idx) => {
+          return(
+            <Row key={'movie-list-'+idx}>
+              <Col>{ele.rankOldAndNew}</Col>
+              <Col>{ele.movieNm}</Col>
+            </Row>
+          )
+        }) 
+      }
+    </Row>
   ) 
 };
-
-
 
 export default TimeList;

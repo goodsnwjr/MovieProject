@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 
 const TicketWrapper = styled.div`
-  width: 100%;
+  width: ${props => props.width ? props.width : '100%'};
   height: 100%;
 `
 const TicketHeader = styled.div`
@@ -27,9 +27,9 @@ const emptySeet = (peoType) => {
   peoType={};
 }
 
-const SeatSelectorContainer = ({children, title, retry, peoType}) => {
+const SeatSelectorContainer = ({children, title, retry, width, peoType}) => {
   return (
-      <TicketWrapper>
+      <TicketWrapper style={{width: width? width : false}}>
         <TicketHeader>
           {title}
           {retry && <span className="retry" onClick={emptySeet}> 다시하기</span>}
