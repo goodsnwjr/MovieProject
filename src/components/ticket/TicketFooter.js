@@ -17,26 +17,56 @@ const FooterBlock = styled.div`
   }
 `;
 
-const DividerStyle = {
-  borderLeft: '1px solid #ffffff',
-  height: '20px',
-  top: '35px',
-  marginLeft: '15px',
-  marginRight: '15px',
-}
+const DividerVertical = styled(Divider)`
+  border-left: 1px solid #ffffff;
+  height: 20px;
+  top: 45px;
+  margin-left: 10px;
+  margin-right: 10px;
+`;
 
-const nonSelectFontStyle = {
-  position: 'relative',
-  top: '35px',
-  fontSize: '30px',
-  verticalAlign: 'middle'
-}
+const MovieSelectDiv = styled.div`
+  height: 100%;
+  width: 110px;
+  display: inline-block;
+`;
 
-const seatSelectButtonStyle = {
-  float:'right',
-  height: '70%',
-  marginTop: '20px'
-}
+const TheaterSelectDiv = styled.div`
+  height: 100%;
+  width: 110px;
+  display: inline-block;
+`;
+
+const SeatSelectDiv = styled.div`
+  height: 100%;
+  width: 120px;
+  display: inline-block;
+`;
+
+
+const PaymentSelectDiv = styled.div`
+  height: 100%;
+  width: 110px;
+  display: inline-block;
+`;
+
+const NonSelectText = styled(Text)`
+  position: relative;
+  top: 45px;
+  left: 10px;
+  font-size: 25px;
+  vertical-align: middle;
+  color: white;
+`;
+
+const SeatSelectButton = styled(Button)`
+  float:right;
+  height: 70%;
+  margin-top: 20px;
+  margin-right: 15px;
+`;
+
+
 
 const TicketFooter = (props) => {
   const { ticketPageStatus, setTicketPageStatus } = props;
@@ -47,13 +77,21 @@ const TicketFooter = (props) => {
   return (
     <>
       <FooterBlock>
-        <Text style={nonSelectFontStyle}>영화선택</Text>
-        <Divider type='vertical' style={DividerStyle}/>
-        <Text style={nonSelectFontStyle}>극장선택</Text>
-        <Divider type='vertical' style={DividerStyle} />
-        <Text style={nonSelectFontStyle}>&gt; 좌석선택 </Text>
-        <Text style={nonSelectFontStyle}>&gt; 결제</Text>
-        <Button onClick={seatSelectorButtonClick} style={seatSelectButtonStyle}>좌석선택</Button>
+        <MovieSelectDiv>
+          <NonSelectText>영화선택</NonSelectText>
+        </MovieSelectDiv>
+        <DividerVertical type='vertical' />
+        <TheaterSelectDiv>
+          <NonSelectText>극장선택</NonSelectText>
+        </TheaterSelectDiv>
+        <DividerVertical type='vertical' />
+        <SeatSelectDiv>
+          <NonSelectText>&gt; 좌석선택 </NonSelectText>
+        </SeatSelectDiv>
+        <PaymentSelectDiv>
+          <NonSelectText>&gt; 결제</NonSelectText>
+        </PaymentSelectDiv>
+        <SeatSelectButton onClick={seatSelectorButtonClick}>{ticketPageStatus === 'seatSelector' ? '결제선택' : '좌석선택' }</SeatSelectButton>
       </FooterBlock>
     </>
   ) 
