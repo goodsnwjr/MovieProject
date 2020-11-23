@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Responsive from './Responsive';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { Menu, Dropdown } from 'antd';
 
 
 const HeaderBlock = styled.div`
@@ -36,13 +37,49 @@ const Wrapper = styled(Responsive)`
     margin: 0 auto;
     align-items: center;
     & > a{
-    color:black;
-    font-size: 1.125rem;
-    font-weight: 800;
-    padding: 0 15px;
-  }
+      color:black;
+      font-size: 1.125rem;
+      font-weight: 800;
+      padding: 0 15px;
+    }
+    & > a > a{
+      color:black;
+    }
   }
 `;
+
+
+const MovieMenu = (
+  <Menu>
+    <Menu.Item key="1"><Link type="link" to="/MovieChart">무비차트</Link></Menu.Item>
+    <Menu.Item key="2"><Link type="link" to="/HDTrailer">HD 트레일러</Link></Menu.Item>
+    <Menu.Item key="3"><Link type="link" to="/MovieFinder">무비파인더</Link></Menu.Item>
+    <Menu.Item key="4"><Link type="link" to="/Arthoust">CGV 아트하우스</Link></Menu.Item>
+  </Menu>
+);
+
+const TicketMenu = (
+  <Menu>
+    <Menu.Item key="1">빠른예매</Menu.Item>
+    <Menu.Item key="2">상영시간표</Menu.Item>
+  </Menu>
+);
+
+const TheaterMenu = (
+  <Menu>
+    <Menu.Item key="1">CGV 극장</Menu.Item>
+    <Menu.Item key="2">특별관</Menu.Item>
+    <Menu.Item key="3">CLUB 서비스</Menu.Item>
+  </Menu>
+);
+
+const EventCultureMenu = (
+  <Menu>
+    <Menu.Item key="1">이벤트</Menu.Item>
+    <Menu.Item key="2">기프트샵</Menu.Item>
+    <Menu.Item key="3">매거진</Menu.Item>
+  </Menu>
+);
 
 
 const Header = () => {
@@ -50,15 +87,36 @@ const Header = () => {
     <>
       <HeaderBlock>
         <Wrapper>
-        <Link to="/" className="logo">
+          <Link to="/" className="logo">
             MOVIE
         </Link>
-        <div className="center">
-          <Link type="link" to="/">영화</Link>
-          <Link type="link" to="/ticket">예매</Link>
-          <Link type="link" to="/">극장</Link>
-          <Link type="link" to="/">이벤트&컬처</Link>
-        </div>
+          <div className="center">
+            {/* <Link type="link" to="/">영화</Link>
+            <Link type="link" to="/ticket">예매</Link>
+            <Link type="link" to="/">극장</Link>
+            <Link type="link" to="/">이벤트&컬처</Link> */}
+            <Dropdown overlay={MovieMenu}>
+              <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                <Link type="link" to="/">영화</Link>
+              </a>
+            </Dropdown>
+            <Dropdown overlay={TicketMenu}>
+              <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                <Link type="link" to="/ticket">예매</Link>
+              </a>
+            </Dropdown>
+            <Dropdown overlay={TheaterMenu}>
+              <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                <Link type="link" to="/">극장</Link>
+              </a>
+            </Dropdown>
+            <Dropdown overlay={EventCultureMenu}>
+              <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                <Link type="link" to="/">이벤트&컬처</Link>
+              </a>
+            </Dropdown>
+          </div>
+
         </Wrapper>
       </HeaderBlock>
     </>
