@@ -7,6 +7,7 @@ import RegisterPage from './pages/RegisterPage';
 import TicketPage from './pages/TicketMainPage';
 import 'antd/dist/antd.css';
 
+export 
 function App() {
   return (
     <>

@@ -1,25 +1,11 @@
 import React from 'react';
 
 //modulse
-import {Row, Col} from 'antd';
+import { Row, Col } from 'antd';
 
 const TimeList = (props) => {
-  const {movie, chooseMovie, setDecide} = props;
-  let movieList = movie && movie.boxOfficeResult.dailyBoxOfficeList;
-  return (
-    <Row>
-      {
-        movie && movieList.map((ele, idx) => {
-          return(
-            <Row key={'movie-list-'+idx}>
-              <Col>{ele.rankOldAndNew}</Col>
-              <Col>{ele.movieNm}</Col>
-            </Row>
-          )
-        }) 
-      }
-    </Row>
-  ) 
+  const { movie, chooseMovie, setDecide } = props;
+  return <Row>{<div>예약가능한 시간이 없습니다.</div>}</Row>;
 };
 
 export default TimeList;
