@@ -1,5 +1,5 @@
 import React from 'react';
-import {MainLayout} from '../modules/styled';
+import { MainLayout } from '../modules/styled';
 import HeaderContainer from '../containers/common/HeaderContainer';
 import TicketMainContainer from '../containers/ticket/TicketMainContainer';
 
