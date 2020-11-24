@@ -28,7 +28,7 @@ const StyledInput = styled.input`
   width: 100%;                
   &:focus {
     color: $oc-teal-7;
-    border-bottom: 1px solid gray;z
+    border-bottom: 1px solid gray;
   }
   &+ & {
     margin-top: 1rem;
