@@ -12,13 +12,9 @@ import DateList from '../../components/ticket/movie/DateList';
 import TimeList from '../../components/ticket/movie/TimeList';
 
 const MovieSelectorContainer = () => {
-	const [movie, setMovie] = useState(null);
-	const [theater, setTheater] = useState(null);
 	const [date, setsetDate] = useState(new Date());
-
 	const [loading, setLoading] = useState(null);
 	const [error, setError] = useState(null);
-
 	const [decide, setDecide] = useState({
 		movie: '',
 		theater: '',
@@ -29,20 +25,20 @@ const MovieSelectorContainer = () => {
 	let MovieAPI = movieList;
 	let TheaterAPI = theaterList;
 
-	console.log(MovieAPI);
 	const day = date.getDay().toString().length === 1 ? '0' + date.getDay() : date.getDay();
 	const today = date.getFullYear().toString() + date.getMonth().toString() + day;
 
 	const chooseMovie = (e) => {
 		setDecide({
 			...decide,
-			[e.target.name]: [e.target.value],
+			[e.target.name]: e.target.value,
 		});
-
-		console.log(decide);
 	};
-	const chooseTheater = (e) => {
-		// e.target.value
+	const chooseTheater = (value, e) => {
+		setDecide({
+			...decide,
+			theater: value,
+		});
 	};
 	const chooseDate = (e) => {
 		// e.target.value
@@ -50,7 +46,9 @@ const MovieSelectorContainer = () => {
 	const chooseTime = (e) => {
 		// e.target.value
 	};
-
+	useEffect(() => {
+		console.log(decide);
+	}, [decide]);
 	//전송도 여기서!!
 
 	return (
@@ -58,8 +56,6 @@ const MovieSelectorContainer = () => {
 			<TicketCommonLayout title="영화" width="30%">
 				<MovieList
 					MovieAPI={MovieAPI}
-					movie={movie}
-					setMovie={setMovie}
 					today={today}
 					setsetDate={setsetDate}
 					chooseMovie={chooseMovie}
@@ -71,9 +67,7 @@ const MovieSelectorContainer = () => {
 			<TicketCommonLayout title="극장" width="30%">
 				<TheaterList
 					TheaterAPI={TheaterAPI}
-					theater={theater}
 					chooseTheater={chooseTheater}
-					setTheater={setTheater}
 					today={today}
 					setsetDate={setsetDate}
 					setDecide={setDecide}
@@ -85,7 +79,7 @@ const MovieSelectorContainer = () => {
 				<DateList date={date} chooseDate={chooseDate} />
 			</TicketCommonLayout>
 			<TicketCommonLayout title="시간" width="30%">
-				<TimeList movie={movie} chooseTime={chooseTime} />
+				<TimeList chooseTime={chooseTime} />
 			</TicketCommonLayout>
 		</Row>
 	);
