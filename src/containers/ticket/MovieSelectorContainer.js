@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 //modules
 import { movieList, theaterList } from 'modules/movieList.js';
 import { Row } from 'antd';
+import { format } from 'date-fns';
 
 //component
 import TicketCommonLayout from '../../components/ticket/TicketCommonLayout';
@@ -34,14 +35,19 @@ const MovieSelectorContainer = () => {
 			[e.target.name]: e.target.value,
 		});
 	};
-	const chooseTheater = (value, e) => {
+	const chooseTheater = (value) => {
 		setDecide({
 			...decide,
 			theater: value,
 		});
 	};
-	const chooseDate = (e) => {
-		// e.target.value
+	const chooseDate = (value) => {
+		console.log(value);
+		let result = format(new Date(value), 'yyyyMMdd');
+		setDecide({
+			...decide,
+			date: result,
+		});
 	};
 	const chooseTime = (e) => {
 		// e.target.value
