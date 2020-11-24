@@ -54,11 +54,23 @@ const MovieMenu = (
   <Menu>
     <Menu.Item key="1" ><Link type="link" to="/MovieChart">무비차트</Link></Menu.Item>
     <Menu.Item key="2"><Link type="link" to="/HDTrailer">HD 트레일러</Link></Menu.Item>
-    <Menu.Item key="3"><Link type="link" to="/MovieFinder">무비파인더</Link></Menu.Item>
-    <Divider style={{ margin: 0 }} />
+    <Menu.Item key="3" style={{ borderBottom: "1px solid gray" }}><Link type="link" to="/MovieFinder">무비파인더</Link></Menu.Item>
+
+    {/* <Divider style={{ margin: 0 }} /> */}
     <Menu.Item key="4"><Link type="link" to="/Arthouse">CGV 아트하우스</Link></Menu.Item>
   </Menu>
 )
+
+// const MovieMenu = () => {
+//   return (
+//     <>
+//       <Menu.Item key="1" ><Link type="link" to="/MovieChart">무비차트</Link></Menu.Item>
+//       <Menu.Item key="2"><Link type="link" to="/HDTrailer">HD 트레일러</Link></Menu.Item>
+//       <Menu.Item key="3" style="border-bottom:1px solid gray;"><Link type="link" to="/MovieFinder">무비파인더</Link></Menu.Item>
+//       <Menu.Item key="4"><Link type="link" to="/Arthouse">CGV 아트하우스</Link></Menu.Item>
+//     </>
+//   )
+// }
 
 const TicketMenu = (
   <Menu>
@@ -70,8 +82,8 @@ const TicketMenu = (
 const TheaterMenu = (
   <Menu>
     <Menu.Item key="1">CGV 극장</Menu.Item>
-    <Menu.Item key="2">특별관</Menu.Item>
-    <Divider style={{ margin: "0" }} />
+    <Menu.Item key="2" style={{ borderBottom: "1px solid gray" }}>특별관</Menu.Item>
+    {/* <Divider style={{ margin: "0" }} /> */}
     <Menu.Item key="3">CLUB 서비스</Menu.Item>
   </Menu>
 );
@@ -93,15 +105,13 @@ const MenuCreate = ({ MenuName, TopLink, TopTitle }) => {
 }
 
 
-// const SubMenuCreate = ({ keys, title }) => {
-//   return (
-//     <Menu mode="horizontal" >
-//       {/* <SubMenu key={key} title={title}> */}
-//       <MovieMenu key={keys} title={title} />
-//       {/* </SubMenu> */}
-//     </Menu>
-//   )
-// }
+const SubMenuCreate = ({ keys, title }) => {
+  return (
+    <SubMenu key={keys} title={title}>
+      <MovieMenu />
+    </SubMenu>
+  )
+}
 
 const Header = () => {
   return (
@@ -113,7 +123,9 @@ const Header = () => {
           </Link>
           <div className="center">
             {/* <Menu mode="horizontal"> */}
+            {/* <Menu.Item key="mail" >aaa</Menu.Item> */}
             {/* <SubMenuCreate keys="1" title="영화" /> */}
+            {/* </Menu> */}
             {/* <SubMenu key="SubMenu" title="Navigation Three - Submenu">
                 <Menu.Item key="1">이벤트</Menu.Item>
                 <Menu.Item key="2">기프트샵</Menu.Item>
