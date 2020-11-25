@@ -33,6 +33,7 @@ const TheaterList = (props) => {
 					options={TheaterAPI.Theater}
 					onChange={(value) => chooseTheater(value)}
 					defaultValue={['서울', '강변', '10: 30']}
+					style={{}}
 				/>
 			)}
 		</>
