@@ -1,11 +1,17 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../../modules/user';
 import Header from '../../components/common/Header';
 
 const HeaderContainer = () => {
-  return <Header />;
+  const { user } = useSelector(({ user }) => ({ user: user.user }));
+  console.log(user);
+  const dispatch = useDispatch();
+  const onLogout = () => {
+    console.log('AA');
+    dispatch(logout());
+  };
+  return <Header user={user} onLogout={onLogout} />;
 };
 
-
-
 export default HeaderContainer;
-
