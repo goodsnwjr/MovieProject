@@ -1,7 +1,13 @@
-import React from 'react';
+import { combineReducers } from 'redux';
+import { all } from 'redux-saga/effects';
+import user, { userSaga } from './user';
 
-const modules = () => {
-    return <div>모듈 폴더 생성</div>;
-};
+const rootReducer = combineReducers({
+  user,
+});
 
-export default modules;
+export function* rootSaga() {
+  yield all([userSaga()]);
+}
+
+export default rootReducer;

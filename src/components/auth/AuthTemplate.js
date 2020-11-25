@@ -13,7 +13,7 @@ const AuthTemplateBlock = styled.div`
   top: 0;
   bottom: 0;
   right: 0;
-  background: gray;
+  background: #f2f0e5;
   /* flex로 내부 내용 중앙 정렬 */
   display: flex;
   flex-direction: column;
@@ -34,15 +34,24 @@ const WhiteBox = styled.div`
   padding: 2rem;
   width: 360px;
   background: white;
-  border-radius: 2px;
+  border: 1px solid black;
+  border-radius: 5px;
+`;
+
+const Logo = styled(Link)`
+  color: #fa5252;
+  font-size: 18pt;
+  &:hover {
+    color: #c92a2a;
+  }
 `;
 
 const AuthTemplate = ({ children }) => {
   return (
     <AuthTemplateBlock>
       <WhiteBox>
-        <div className="logo-area">
-          <Link to="/">REACTERS</Link>
+        <div className='logo-area'>
+          <Logo to='/'>CGV</Logo>
         </div>
         {children}
       </WhiteBox>
