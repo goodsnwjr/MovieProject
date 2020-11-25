@@ -16,12 +16,7 @@ const MovieSelectorContainer = () => {
 	const [date, setsetDate] = useState(new Date());
 	const [loading, setLoading] = useState(null);
 	const [error, setError] = useState(null);
-	const [decide, setDecide] = useState({
-		movie: '',
-		theater: '',
-		date: '',
-		time: '',
-	});
+	const [decide, setDecide] = useState({});
 
 	let MovieAPI = movieList;
 	let TheaterAPI = theaterList;
@@ -30,9 +25,10 @@ const MovieSelectorContainer = () => {
 	const today = date.getFullYear().toString() + date.getMonth().toString() + day;
 
 	const chooseMovie = (e) => {
+		console.log(e);
 		setDecide({
-			...decide,
-			[e.target.name]: e.target.value,
+			// ...decide,
+			movie: e.target.value,
 		});
 	};
 	const chooseTheater = (value) => {
@@ -42,7 +38,6 @@ const MovieSelectorContainer = () => {
 		});
 	};
 	const chooseDate = (value) => {
-		console.log(value);
 		let result = format(new Date(value), 'yyyyMMdd');
 		setDecide({
 			...decide,
@@ -50,15 +45,18 @@ const MovieSelectorContainer = () => {
 		});
 	};
 	const chooseTime = (e) => {
-		// e.target.value
+		console.log(e);
+		setDecide({
+			...decide,
+			time: e.target.value,
+		});
 	};
 	useEffect(() => {
 		console.log(decide);
 	}, [decide]);
-	//전송도 여기서!!
 
 	return (
-		<Row justify="center" style={{ minHeight: '500px' }}>
+		<Row justify="center" style={{ minHeight: '600px', maxHeight: '600px', overflow: 'hidden' }}>
 			<TicketCommonLayout title="영화" width="30%">
 				<MovieList
 					MovieAPI={MovieAPI}
@@ -81,11 +79,11 @@ const MovieSelectorContainer = () => {
 					setError={setError}
 				/>
 			</TicketCommonLayout>
-			<TicketCommonLayout title="날짜" width="10%">
-				<DateList date={date} chooseDate={chooseDate} />
+			<TicketCommonLayout title="날짜" width="10%" style={{ height: '600px', overflow: 'scroll' }}>
+				<DateList date={date} setDecide={setDecide} chooseDate={chooseDate} />
 			</TicketCommonLayout>
 			<TicketCommonLayout title="시간" width="30%">
-				<TimeList chooseTime={chooseTime} />
+				<TimeList MovieAPI={MovieAPI} decide={decide} setDecide={setDecide} chooseTime={chooseTime} />
 			</TicketCommonLayout>
 		</Row>
 	);
