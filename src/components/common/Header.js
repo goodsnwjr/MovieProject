@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Responsive from './Responsive';
 import { Link } from 'react-router-dom';
-import { Menu, Dropdown, Divider } from 'antd';
+import { Menu, Dropdown, Divider, Button } from 'antd';
 
 const { SubMenu } = Menu;
 
@@ -12,6 +12,7 @@ const HeaderBlock = styled.div`
   top: 0;
   background: white;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  margin-bottom: 15px;
   z-index: 99;
 `;
 
@@ -47,27 +48,48 @@ const Wrapper = styled(Responsive)`
   }
 `;
 
+const UserInfo = styled.div`
+  font-weight: 800;
+  margin-right: 1rem;
+  display: inline-block;
+`;
+
+const LoginLogoutButton = styled(Link)`
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.25rem 1rem;
+  color: black;
+  outline: none;
+  cursor: pointer;
+  background-color: #e7f5ff;
+  &:hover {
+    color: blue;
+  }
+`;
+
 const MovieMenu = (
   <Menu>
     <Menu.Item key='1'>
-      <Link type='link' to='/MovieChart'>
+      <Link type='link' to='/movieChart'>
         무비차트
       </Link>
     </Menu.Item>
     <Menu.Item key='2'>
-      <Link type='link' to='/HDTrailer'>
+      <Link type='link' to='/hdTrailer'>
         HD 트레일러
       </Link>
     </Menu.Item>
     <Menu.Item key='3' style={{ borderBottom: '1px solid gray' }}>
-      <Link type='link' to='/MovieFinder'>
+      <Link type='link' to='/movieFinder'>
         무비파인더
       </Link>
     </Menu.Item>
 
     {/* <Divider style={{ margin: 0 }} /> */}
     <Menu.Item key='4'>
-      <Link type='link' to='/Arthouse'>
+      <Link type='link' to='/arthouse'>
         CGV 아트하우스
       </Link>
     </Menu.Item>
@@ -87,27 +109,57 @@ const MovieMenu = (
 
 const TicketMenu = (
   <Menu>
-    <Menu.Item key='1'>빠른예매</Menu.Item>
-    <Menu.Item key='2'>상영시간표</Menu.Item>
+    <Menu.Item key='1'>
+      <Link type='link' to='/fastTicketing'>
+        빠른예매
+      </Link>
+    </Menu.Item>
+    <Menu.Item key='2'>
+      <Link type='link' to='/movieTime'>
+        상영시간표
+      </Link>
+    </Menu.Item>
   </Menu>
 );
 
 const TheaterMenu = (
   <Menu>
-    <Menu.Item key='1'>CGV 극장</Menu.Item>
+    <Menu.Item key='1'>
+      <Link type='link' to='/theater'>
+        CGV 극장
+      </Link>
+    </Menu.Item>
     <Menu.Item key='2' style={{ borderBottom: '1px solid gray' }}>
-      특별관
+      <Link type='link' to='/specialTheater'>
+        특별관
+      </Link>
     </Menu.Item>
     {/* <Divider style={{ margin: "0" }} /> */}
-    <Menu.Item key='3'>CLUB 서비스</Menu.Item>
+    <Menu.Item key='3'>
+      <Link type='link' to='/clubService'>
+        CLUB 서비스
+      </Link>
+    </Menu.Item>
   </Menu>
 );
 
 const EventCultureMenu = (
   <Menu>
-    <Menu.Item key='1'>이벤트</Menu.Item>
-    <Menu.Item key='2'>기프트샵</Menu.Item>
-    <Menu.Item key='3'>매거진</Menu.Item>
+    <Menu.Item key='1'>
+      <Link type='link' to='/event'>
+        이벤트
+      </Link>
+    </Menu.Item>
+    <Menu.Item key='2'>
+      <Link type='link' to='/giftshop'>
+        기프트샵
+      </Link>
+    </Menu.Item>
+    <Menu.Item key='3'>
+      <Link type='link' to='/magazine'>
+        매거진
+      </Link>
+    </Menu.Item>
   </Menu>
 );
 
@@ -115,7 +167,6 @@ const MenuCreate = ({ MenuName, TopLink, TopTitle }) => {
   return (
     <Dropdown overlay={MenuName}>
       <Link className='ant-dropdown-link' type='link' to={TopLink}>
-        {' '}
         {TopTitle}
       </Link>
     </Dropdown>
@@ -130,7 +181,7 @@ const SubMenuCreate = ({ keys, title }) => {
   );
 };
 
-const Header = () => {
+const Header = ({ user, onLogout }) => {
   return (
     <>
       <HeaderBlock>
@@ -174,6 +225,28 @@ const Header = () => {
               key='4'
             />
           </div>
+          {localStorage.getItem('user') ? (
+            <div className='right'>
+              <UserInfo>
+                {localStorage.getItem('user').split('_')[0]} 님
+              </UserInfo>
+              <LoginLogoutButton onClick={onLogout}>로그아웃</LoginLogoutButton>
+            </div>
+          ) : (
+            <div className='right'>
+              <LoginLogoutButton to='/login'>로그인</LoginLogoutButton>
+            </div>
+          )}
+          {/* {user ? (
+            <div className='right'>
+              <UserInfo>{user.username}</UserInfo>
+              <LoginLogoutButton onClick={onLogout}>로그아웃</LoginLogoutButton>
+            </div>
+          ) : (
+            <div className='right'>
+              <LoginLogoutButton to='/login'>로그인</LoginLogoutButton>
+            </div>
+          )} */}
         </Wrapper>
       </HeaderBlock>
     </>
