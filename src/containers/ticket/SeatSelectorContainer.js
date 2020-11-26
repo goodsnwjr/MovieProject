@@ -8,14 +8,12 @@ const SeatSelectorContainer = (props) => {
 
   return (
     <>
-      <TicketCommonLayout title="인원 / 좌석" retry >
+      <TicketCommonLayout title='인원 / 좌석' retry>
         <SelectSeet peoType={peoType} preference={preference} peopleType={peopleType} />
       </TicketCommonLayout>
       <SeatList ticketPageStatus={ticketPageStatus} setTicketPageStatus={setTicketPageStatus} />
     </>
-  )
+  );
 };
-
-
 
 export default SeatSelectorContainer;

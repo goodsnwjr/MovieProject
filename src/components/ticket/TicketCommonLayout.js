@@ -33,7 +33,6 @@ const TicketCommonLayout = ({ children, title, retry, width, peoType, ...rest })
         {title}
         {retry && (
           <span className='retry' onClick={emptySeet}>
-            {' '}
             다시하기
           </span>
         )}

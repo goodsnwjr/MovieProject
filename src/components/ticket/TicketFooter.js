@@ -7,13 +7,13 @@ const { Text } = Typography;
 const FooterBlock = styled.div`
   position: relative;
   width: 100%;
-  height:128px;
+  height: 128px;
   top: 0;
   background: #1d1d1c;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
   z-index: 99;
   > span {
-    color:white;
+    color: white;
   }
 `;
 
@@ -55,18 +55,18 @@ const NonSelectText = styled(Text)`
   vertical-align: middle;
   color: white;
   :nth-of-type(2) {
-    font-size:20px;
+    font-size: 20px;
   }
 `;
 
 const MovieSelectButton = styled(Button)`
-  float:left;
+  float: left;
   height: 70%;
   margin-top: 20px;
 `;
 
 const SeatSelectButton = styled(Button)`
-  float:right;
+  float: right;
   height: 70%;
   margin-top: 20px;
 `;
@@ -75,13 +75,17 @@ const TicketFooter = (props) => {
   const { ticketPageStatus, setTicketPageStatus } = props;
   const seatSelectorButtonClick = (e) => {
     const ticketStatus = e.currentTarget.dataset.status;
-    setTicketPageStatus(ticketStatus)
-  }
+    setTicketPageStatus(ticketStatus);
+  };
 
   return (
     <>
       <FooterBlock>
-        {ticketPageStatus === 'seatSelector' && <MovieSelectButton data-status="movieSelector" onClick={seatSelectorButtonClick}>영화선택</MovieSelectButton>}
+        {ticketPageStatus === 'seatSelector' && (
+          <MovieSelectButton data-status='movieSelector' onClick={seatSelectorButtonClick}>
+            영화선택
+          </MovieSelectButton>
+        )}
         <MovieSelectDiv>
           <NonSelectText>영화선택</NonSelectText>
         </MovieSelectDiv>
@@ -96,12 +100,12 @@ const TicketFooter = (props) => {
         <PaymentSelectDiv>
           <NonSelectText>&gt; 결제</NonSelectText>
         </PaymentSelectDiv>
-        <SeatSelectButton onClick={seatSelectorButtonClick} data-status="seatSelector" >{ticketPageStatus === 'seatSelector' ? '결제선택' : '좌석선택'}</SeatSelectButton>
+        <SeatSelectButton onClick={seatSelectorButtonClick} data-status='seatSelector'>
+          {ticketPageStatus === 'seatSelector' ? '결제선택' : '좌석선택'}
+        </SeatSelectButton>
       </FooterBlock>
     </>
-  )
+  );
 };
-
-
 
 export default TicketFooter;

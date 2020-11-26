@@ -3,11 +3,10 @@ import SwiperBanner from '../../components/main/SwiperBanner';
 
 const MainContainer = () => {
   return (
-      <>
-        <SwiperBanner />
-      </>
-  )
+    <>
+      <SwiperBanner />
+    </>
+  );
 };
 
 export default MainContainer;
-
