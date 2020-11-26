@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 //modules
-import { movieList, theaterList } from 'modules/movieList.js';
+import { movieList, theaterList } from 'lib/ticket/movieList.js';
 import { Row } from 'antd';
 import { format } from 'date-fns';
 
@@ -13,14 +13,10 @@ import DateList from '../../components/ticket/movie/DateList';
 import TimeList from '../../components/ticket/movie/TimeList';
 
 const MovieSelectorContainer = () => {
-  const [date, setsetDate] = useState(new Date());
   const [decide, setDecide] = useState({});
 
   let MovieAPI = movieList;
   let TheaterAPI = theaterList;
-
-  const day = date.getDay().toString().length === 1 ? '0' + date.getDay() : date.getDay();
-  const today = date.getFullYear().toString() + date.getMonth().toString() + day;
 
   const chooseMovie = (e) => {
     console.log(e);
@@ -60,7 +56,7 @@ const MovieSelectorContainer = () => {
       <TicketCommonLayout title='극장' width='30%'>
         <TheaterList TheaterAPI={TheaterAPI} chooseTheater={chooseTheater} />
       </TicketCommonLayout>
-      <TicketCommonLayout title='날짜' width='10%'>
+      <TicketCommonLayout title='날짜' width='10%' height='300px'>
         <DateList setDecide={setDecide} chooseDate={chooseDate} />
       </TicketCommonLayout>
       <TicketCommonLayout title='시간' width='30%'>

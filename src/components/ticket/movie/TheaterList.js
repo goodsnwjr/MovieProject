@@ -1,8 +1,8 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React from 'react';
 
 //modulse
 import styled from 'styled-components';
-import { Row, Col, Cascader } from 'antd';
+import { Cascader } from 'antd';
 
 const TheaterList = (props) => {
   const { TheaterAPI, chooseTheater } = props;
@@ -15,7 +15,6 @@ const TheaterList = (props) => {
           options={TheaterAPI.Theater}
           onChange={(value) => chooseTheater(value)}
           defaultValue={['서울', '강변', '10: 30']}
-          style={{}}
         />
       )}
     </>
