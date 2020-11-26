@@ -200,36 +200,14 @@ const Header = ({ user, onLogout }) => {
                 <Menu.Item key="3">매거진</Menu.Item>
               </SubMenu>
             </Menu> */}
-            <MenuCreate
-              MenuName={MovieMenu}
-              TopLink='/'
-              TopTitle='영화'
-              key='1'
-            />
-            <MenuCreate
-              MenuName={TicketMenu}
-              TopLink='/ticket'
-              TopTitle='예매'
-              key='2'
-            />
-            <MenuCreate
-              MenuName={TheaterMenu}
-              TopLink='/theater'
-              TopTitle='극장'
-              key='3'
-            />
-            <MenuCreate
-              MenuName={EventCultureMenu}
-              TopLink='/event'
-              TopTitle='이벤트&컬처'
-              key='4'
-            />
+            <MenuCreate MenuName={MovieMenu} TopLink='/' TopTitle='영화' key='1' />
+            <MenuCreate MenuName={TicketMenu} TopLink='/ticket' TopTitle='예매' key='2' />
+            <MenuCreate MenuName={TheaterMenu} TopLink='/theater' TopTitle='극장' key='3' />
+            <MenuCreate MenuName={EventCultureMenu} TopLink='/event' TopTitle='이벤트&컬처' key='4' />
           </div>
           {localStorage.getItem('user') ? (
             <div className='right'>
-              <UserInfo>
-                {localStorage.getItem('user').split('_')[0]} 님
-              </UserInfo>
+              <UserInfo>{localStorage.getItem('user').split('_')[0]} 님</UserInfo>
               <LoginLogoutButton onClick={onLogout}>로그아웃</LoginLogoutButton>
             </div>
           ) : (

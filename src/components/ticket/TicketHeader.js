@@ -17,44 +17,39 @@ const ButtonStyle = styled.div`
   &last-chiled {
     margin-right: 0px;
   }
-`
+`;
 const TicketHeader = () => {
   const buttonList = [
     {
       name: 'ENGLISH',
-      lang: 'ko'
+      lang: 'ko',
     },
     {
       name: '예매가이드',
-      modal: false
+      modal: false,
     },
     {
       name: '제휴할인혜택',
-      path: '/'
+      path: '/',
     },
     {
       name: '상영시간표',
       icon: '',
-      modal: false
+      modal: false,
     },
     {
       name: '예매 다시하기',
       icon: '',
-      modal: false
+      modal: false,
     },
-    
-  ]
+  ];
   return (
-    <div style={{textAlign: 'right'}}>
-      {
-        buttonList.map((ele, idx)=> {
-          return (
-            <ButtonStyle key={`bookingNai-${idx}`}>{ele.name} </ButtonStyle>
-          )
-        })
-      }
+    <div style={{ textAlign: 'right' }}>
+      {buttonList.map((ele, idx) => {
+        return <ButtonStyle key={`bookingNai-${idx}`}>{ele.name} </ButtonStyle>;
+      })}
     </div>
-  )
-}
+  );
+};
 
 export default TicketHeader;

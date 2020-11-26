@@ -8,7 +8,6 @@ const HeaderContainer = () => {
   console.log(user);
   const dispatch = useDispatch();
   const onLogout = () => {
-    console.log('AA');
     dispatch(logout());
   };
   return <Header user={user} onLogout={onLogout} />;
