@@ -14,29 +14,56 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "mongoDs",
+    "public" : true,
+    "options": {
+      "emailVerificationRequired": true,
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "find": true,
+          "login": true,
+          "logout": true,
+          "profile": true,
+          "create": true,
+          "auth": true,
+          "verify": true,
+          "prototype.patchAttributes": true,
+          "updateAll": true,
+          "findById": true,
+          "getBranches": true
+        }
+      }
+    }
+  },
+  "users": {
+    "dataSource": "mongoDs",
+    "public" : true
   },
   "AccessToken": {
-    "dataSource": "db",
-    "public": false
+    "dataSource": "mongoDs",
+    "public": false,
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "users",
+        "foreignKey": "usersId"
+      }
+    }
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "mongoDs",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "mongoDs",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "mongoDs",
     "public": false
-  },
-  "user": {
-    "dataSource": "db",
-    "public": true
   }
 }
