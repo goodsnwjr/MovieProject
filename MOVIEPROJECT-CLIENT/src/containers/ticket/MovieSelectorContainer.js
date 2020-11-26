@@ -14,6 +14,8 @@ import TimeList from '../../components/ticket/movie/TimeList';
 
 const MovieSelectorContainer = () => {
   const [decide, setDecide] = useState({});
+  const [selectLocal, setSelectLocal] = useState(false);
+  const [selectedTheater, setSelectedTheater] = useState(['서울']);
 
   let MovieAPI = movieList;
   let TheaterAPI = theaterList;
@@ -24,10 +26,16 @@ const MovieSelectorContainer = () => {
       movie: e.target.value,
     });
   };
-  const chooseTheater = (value) => {
+
+  const chooseCity = (e) => {
+    setSelectLocal(true);
+    setSelectedTheater([e.target.value]);
+  };
+
+  const chooseTheater = (e) => {
     setDecide({
       ...decide,
-      theater: value,
+      theater: e.target.value,
     });
   };
   const chooseDate = (value) => {
@@ -50,16 +58,23 @@ const MovieSelectorContainer = () => {
 
   return (
     <Row justify='center' style={{ minHeight: '600px', maxHeight: '600px', overflow: 'hidden' }}>
-      <TicketCommonLayout title='영화' width='30%'>
+      <TicketCommonLayout title='영화' width='35%'>
         <MovieList MovieAPI={MovieAPI} chooseMovie={chooseMovie} />
       </TicketCommonLayout>
-      <TicketCommonLayout title='극장' width='30%'>
-        <TheaterList TheaterAPI={TheaterAPI} chooseTheater={chooseTheater} />
+      <TicketCommonLayout title='극장' width='26.5%'>
+        <TheaterList
+          TheaterAPI={TheaterAPI}
+          selectLocal={selectLocal}
+          chooseCity={chooseCity}
+          selectedTheater={selectedTheater}
+          setSelectedTheater={setSelectedTheater}
+          chooseTheater={chooseTheater}
+        />
       </TicketCommonLayout>
-      <TicketCommonLayout title='날짜' width='10%' height='300px'>
+      <TicketCommonLayout title='날짜' width='10%' style={{ overflow: 'scroll', height: '600px' }}>
         <DateList setDecide={setDecide} chooseDate={chooseDate} />
       </TicketCommonLayout>
-      <TicketCommonLayout title='시간' width='30%'>
+      <TicketCommonLayout title='시간' width='26.5%'>
         <TimeList MovieAPI={MovieAPI} decide={decide} chooseTime={chooseTime} />
       </TicketCommonLayout>
     </Row>

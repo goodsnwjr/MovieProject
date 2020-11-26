@@ -1,0 +1,5 @@
+.ant-cascader-menus-empty,
+.ant-cascader-menus-hidden {
+  display: block !important;
+  width: 10% !important;
+}
