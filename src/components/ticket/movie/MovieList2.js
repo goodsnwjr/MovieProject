@@ -4,22 +4,28 @@ import React from 'react';
 import { Col, Radio } from 'antd';
 import styled from 'styled-components';
 
+export const FilmRating = ({ movie, bgcolor, textcolor }) => {
+  return <Col style={{ background: bgcolor, color: textcolor }}>{movie}</Col>;
+};
+
 const MovieList = ({ MovieAPI, chooseMovie }) => {
   let movieList = MovieAPI && MovieAPI.dailyBoxOfficeList;
 
-  const MovieListStyle = styled(Radio.Group)((props) => {
-    console.log(props);
-    return `
+  const MovieListStyle = styled(Radio.Group)`
     .ant-col {
-          display: inline-block;
-          &:first-child {
-            margin-right: 5px;
-            border-radius: 50%;
-            background: ${props ? props.bgcolor : 'transparent'};
-            color: ${props ? props.textcolor : '#000'};
-        }
-    `;
-  });
+      display: inline-block;
+      &:first-child {
+        display: inline-block;
+        margin-right: 5px;
+        border-radius: 50%;
+      }
+    }
+    .ant-radio-button-wrapper {
+      display: block;
+      border: none;
+      font-size: 15px;
+    }
+  `;
 
   return (
     <MovieListStyle defaultValue='a' size='large' name='movie'>
@@ -51,9 +57,7 @@ const MovieList = ({ MovieAPI, chooseMovie }) => {
 
           return (
             <Radio.Button value={movie.movieNm} onClick={(e) => chooseMovie(e)} key={`movie-list-${idx}`}>
-              <MovieListStyle bgcolor={bgcolor} textcolor={textcolor}>
-                {movie.age}
-              </MovieListStyle>
+              <FilmRating movie={movie.age} bgcolor={bgcolor} textcolor={textcolor} />
               <Col>{movie.movieNm}</Col>
             </Radio.Button>
           );

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Row, Col, Button } from 'antd';
+import styled from 'styled-components';
 
 const NumberOfPeople = (props) => {
   const { type, peoType } = props;
@@ -28,9 +29,36 @@ const NumberOfPeople = (props) => {
     console.log(peoType);
   };
 
+  const FocusStyle = styled(Row)`
+    /* antd custom */
+    .select-type {
+      min-width: 50px;
+      line-height: 34px;
+    }
+
+    .ant-btn {
+      padding: 4px 10px;
+      font-weight: 900;
+      margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .ant-btn:hover {
+      background-color: red;
+      color: #fff;
+      border-color: #fff;
+    }
+    .ant-btn:focus {
+      background-color: #000;
+      color: #fff;
+      border-color: #fff;
+    }
+  `;
+
   return (
-    <Row>
-      <Col>{pType}</Col>
+    <FocusStyle>
+      <Col className='select-type'>{pType}</Col>
       <Col className={type}>
         {seet.map((ele, idx) => {
           return (
@@ -40,7 +68,7 @@ const NumberOfPeople = (props) => {
           );
         })}
       </Col>
-    </Row>
+    </FocusStyle>
   );
 };
 
